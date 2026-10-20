@@ -1,14 +1,36 @@
 let container = document.querySelector(".container");
-let x = 1;
-while (x <= 256) {
-  let square = document.createElement("div");
-  square.classList.add("square");
-  container.appendChild(square);
-  x++;
+let btn = document.querySelector("button");
+function gridMaker() {
+  let x = 1;
+  while (x <= 256) {
+    let square = document.createElement("div");
+    square.classList.add("square");
+    container.appendChild(square);
+    x++;
+  }
 }
-let btn = document.createElement("button");
-let squares = document.querySelectorAll(".square");
+gridMaker();
 
+let squares = document.querySelectorAll(".square");
 for (const s of squares) {
   s.addEventListener("mouseenter", () => (s.style.backgroundColor = "pink"));
 }
+function newGrid(usrInput) {
+  let x = 1;
+  while (x <= usrInput ** 2) {
+    let square = document.createElement("div");
+    square.classList.add("square");
+    container.appendChild(square);
+    x++;
+  }
+}
+btn.addEventListener("click", () => {
+  for (const s of squares) {
+    s.remove();
+  }
+  let n = prompt("Please enter a number: ");
+  if (n > 50) {
+    n = prompt("Please reenter a number smaller than 50:");
+  }
+  newGrid(n);
+});
