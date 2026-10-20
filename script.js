@@ -6,3 +6,9 @@ while (x <= 256) {
   container.appendChild(square);
   x++;
 }
+let btn = document.createElement("button");
+let squares = document.querySelectorAll(".square");
+
+for (const s of squares) {
+  s.addEventListener("mouseenter", () => (s.style.backgroundColor = "pink"));
+}
