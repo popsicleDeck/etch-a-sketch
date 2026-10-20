@@ -11,10 +11,13 @@ function gridMaker() {
 }
 gridMaker();
 
-let squares = document.querySelectorAll(".square");
-for (const s of squares) {
-  s.addEventListener("mouseenter", () => (s.style.backgroundColor = "pink"));
+function changeColor() {
+  let squares = document.querySelectorAll(".square");
+  for (const s of squares) {
+    s.addEventListener("mouseenter", () => (s.style.backgroundColor = "pink"));
+  }
 }
+changeColor();
 function newGrid(usrInput) {
   let x = 1;
   while (x <= usrInput ** 2) {
@@ -23,13 +26,15 @@ function newGrid(usrInput) {
     container.appendChild(square);
     x++;
   }
+  changeColor();
 }
 btn.addEventListener("click", () => {
+  let squares = document.querySelectorAll(".square");
   for (const s of squares) {
     s.remove();
   }
   let n = prompt("Please enter a number: ");
-  if (n > 50) {
+  while (n > 50) {
     n = prompt("Please reenter a number smaller than 50:");
   }
   newGrid(n);
